@@ -1,0 +1,4 @@
+TOKEN=`curl -X PUT "http://3.82.187.157/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://3.82.187.157/latest/meta-data/public-ipv4
+
+##https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html
