@@ -3,4 +3,4 @@ yum update -y
 yum install httpd -y
 systemctl start httpd
 systemctl enable httpd
-echo "<h1>Welcome to Amazon Linux <br> My name is ${hostname -f}</h1>" > /var/www/html/index.html
+echo "<h1>Welcome to Amazon Linux <br> My name is $(hostname -f)</h1>" > /var/www/html/index.html
