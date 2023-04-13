@@ -1,0 +1,17 @@
+#list of buckets
+aws s3 ls 
+
+#listing bucket contents
+aws s3 ls demobucket250
+
+#upload
+aws s3 cp tiger.jpg s3://demobucket250
+
+#download
+aws s3 cp s3://mydemobucket2050/tiger.jpg tiger.jpg
+
+#remove an object
+aws s3 rm s3://mydemobucket2050/tiger.jpg
+
+#remove all objects from all folder(bucket will be empty)
+aws s3 rm s3://mydemobucket2050 --recursive
