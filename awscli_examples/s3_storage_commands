@@ -15,3 +15,18 @@ aws s3 rm s3://mydemobucket2050/tiger.jpg
 
 #remove all objects from all folder(bucket will be empty)
 aws s3 rm s3://mydemobucket2050 --recursive
+
+#Delete a Bucket (must be Empty)
+aws s3 rb s3://mydemobucketuswest2050
+
+aws s3api delete-bucket --bucket my-bucket --region us-east-1
+
+#create a bucket
+aws s3 mb s3://mybucket --region us-east-1
+
+aws s3api create-bucket --bucket *nameofbucket* --region us-east-1
+
+#bucket content management 
+aws s3
+#bucket managment
+aws s3api
