@@ -1,0 +1,27 @@
+<!-- 1) create a html file on your local machine (index.html)
+
+2) upload that file to an s3 bucket from your local machine (create bucket if not existing)
+aws s3 cp index.html s3://demobucket250
+
+3) create an IAM policy which gives read-only access to mydemobucket2050 (use IAM service)
+	(add /* after the bucket name in the policy JSON)
+
+4) create an IAM Role and assign the policy created in step 3 (EC2 service can read from S3 bucket)
+
+5) create a security group with ports 22 and 80 open for Inbound traffic (create it from EC2 dashboard)
+
+6) create SSH Key (from EC2 dashboard)
+
+7) create an EC2 instance and use the html file from S3 bucket as our index.html page for the web server 
+installed in EC2 (user data should be used to install web server and copy from S3 to web server folder)
+
+a) select the role created in step 5 in the IAM instance profile dropdown (Advances details section)
+
+b) user data for EC2 instance -->
+
+#!/bin/bash
+yum update -y
+yum install httpd -y
+systemctl start httpd
+systemctl enable httpd
+aws s3 cp s3://mydemobucket2050/index.html /var/www/html/
