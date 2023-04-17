@@ -23,8 +23,8 @@ bucket_prefix = 'demobucket250c'
 
 #provided credentials will be used else picked from CLI configuration if not provided  
 s3 = boto3.resource('s3', 
-                    aws_access_key_id='AKIA6KD4T5TKFOIN2Y5F', 
-                    aws_secret_access_key='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', 
+                    aws_access_key_id='**', 
+                    aws_secret_access_key='**', 
                     region_name='us-east-1')
 
 bucket_response = create_bucket(bucket_prefix,s3)
