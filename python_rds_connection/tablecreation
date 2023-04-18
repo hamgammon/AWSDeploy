@@ -1,0 +1,5 @@
+CREATE TABLE `demoDB`.`emp` (
+  `empno` INT NOT NULL,
+  `ename` VARCHAR(45) NULL,
+  `salary` DECIMAL(8,2) NULL,
+  PRIMARY KEY (`empno`));
