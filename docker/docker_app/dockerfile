@@ -1,0 +1,4 @@
+FROM nginx
+WORKDIR /usr/share/nginx/html
+COPY . . 
+RUN echo This is a test page to make sure all works > demo.html

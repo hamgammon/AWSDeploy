@@ -1,0 +1,50 @@
+# docker run --name " mysqlserver-srv " -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Password_*123"  -e "MSSQL_PID=Developer" -d -p 1412:1433  -v vol1:/var/opt/mssql mcr.microsoft.com/mssql/server:2019-latest
+version: '3.5'
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  vol1:
+  vol2:
+
+services:
+  mywebapp1:
+    image: mywebapp1
+    build:
+      context: ./MyWebApp1
+      #dockerfile: dockerfile
+    ports:
+      - 8080:80
+    networks: 
+    - frontend
+    volumes: 
+    - vol1:/mydemo
+
+  mywebapp2:
+    image: mywebapp2
+    build:
+      context: ./MyWebApp2
+      #dockerfile: dockerfile
+    ports:
+      - 8090:80
+    depends_on:
+    - mywebapp1      
+    networks: 
+    - frontend
+    volumes: 
+    - vol2:/mydemo
+
+  mysqlserver-srv:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1412:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password@123	
+      - MSSQL_PID=Developer
+    volumes:
+      - vol1:/var/opt/mssql
+    networks: 
+    - backend

@@ -1,0 +1,11 @@
+FROM python:3
+
+WORKDIR /app
+
+COPY log.txt /app
+COPY run_count_app.py /app
+
+ENTRYPOINT ["python", "./run_count_app.py"]
+
+
+

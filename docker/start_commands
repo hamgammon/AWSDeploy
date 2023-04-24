@@ -1,0 +1,11 @@
+docker version
+docker pull hello-world
+docker pull nginx
+docker pull alpine
+docker pull ubuntu
+docker image history nginx
+docker inspect nginx
+docker images
+docker image ls
+docker images --no-trunc (List full lengh image IDs)
+docker images --filter=reference=alpine

@@ -1,0 +1,12 @@
+FROM python:3
+
+WORKDIR /app
+
+COPY app.py /app
+COPY mymath.py /app
+
+
+ENTRYPOINT ["python", "./app.py"]
+
+
+

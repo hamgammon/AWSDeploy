@@ -1,0 +1,19 @@
+version: '3'
+
+volumes:
+  vol1:
+  vol2:
+
+services:
+  mywebapp1:
+    image: mywebapp1
+    build:
+      context: ./webapp1
+    ports:
+      - 8080:80
+  mywebapp2:
+    image: mywebapp2
+    build:
+      context: ./webapp2
+    ports:
+      - 8090:80
