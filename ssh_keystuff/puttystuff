@@ -1,0 +1,7 @@
+No need to convert key
+Protect file -> chmod 400 myKeyFile.pem
+Add both keys by doing this command for each key -> ssh-add <path to .pem file>
+To view keys in agent -> ssh-add -l
+SSH into web server -> ssh -A user@webserver IP
+Ping DB Server -> ping dbserver IP
+SSH into db server -> ssh user@dbserver IP
