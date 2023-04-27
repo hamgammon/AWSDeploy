@@ -51,4 +51,17 @@ aws ec2 create-route --route-table-id rtb-044ee67653a9c5c44 --destination-cidr-b
 
 aws ec2 associate-route-table --route-table-id rtb-044ee67653a9c5c44 --subnet-id subnet-0ee2423dbd790a51d
 
+#create elastic ip
 
+aws ec2 allocate-address --query AllocationId --output text
+
+eipalloc-090894a19f1f7754a
+
+#create NAT gateway
+#mind use the public subnet id
+
+aws ec2 create-nat-gateway --subnet-id subnet-0ee2423dbd790a51d --allocation-id eipalloc-090894a19f1f7754a --tag-specification "ResourceType=natgateway,Tags=[{Key=Name,Value=myNATgateway}]"  --output text 
+
+# create route in private subnet
+                    #private subnet route table id                                                              #NAT gatewayid
+aws ec2 create-route --route-table-id rtb-070373a3a1294c18f --destination-cidr-block 0.0.0.0/0 --gateway-id nat-0adbc6ce35eaf1386
