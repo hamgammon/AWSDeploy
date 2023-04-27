@@ -1,8 +1,8 @@
 #create VPC network
 
-aws ec2 create-vpc --cidr-block 10.0.0.0/16 --tag-specification ResourceType=vpc,Tags=[{Key=Name,Value=myCustomVPC}]
+#aws ec2 create-vpc --cidr-block 10.0.0.0/16 --tag-specification ResourceType=vpc,Tags=[{Key=Name,Value=myCustomVPC}]
 
-aws ec2 create-vpc --cidr-block 10.0.0.0/16 --tag-specification ResourceType=vpc,Tags=[{Key=Name,Value=myCustomVPC}] --query Vpc.VpcId --output text
+#aws ec2 create-vpc --cidr-block 10.0.0.0/16 --tag-specification ResourceType=vpc,Tags=[{Key=Name,Value=myCustomVPC}] --query Vpc.VpcId --output text
 
 #create subnets
 

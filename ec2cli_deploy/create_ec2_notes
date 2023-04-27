@@ -1,0 +1,22 @@
+
+aws ec2 create-instance
+--ami-id ami-02396cdd13e9a1257
+--instance-type t2.micro
+--subnet-id 
+--ssh-key-name
+
+--region
+--install-updates-on-boot True
+--tag-specification "ResourceType=subnet,Tags=[{Key=Name,Value=myPublicSubnet}]" --query Subnet.SubnetId --output text
+
+name  --create instance
+ami  --create instance
+keypair
+vpc > subnet
+subnet > sub net
+sc group > open ports
+storage > block device mappings
+user data
+
+
+
