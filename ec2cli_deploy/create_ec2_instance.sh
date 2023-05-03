@@ -22,7 +22,6 @@ aws ec2 authorize-security-group-ingress --group-id sg-05826b1f34c0606b8 --proto
 aws ec2 authorize-security-group-ingress --group-id sg-05826b1f34c0606b8 --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges="[{CidrIp=0.0.0.0/0}]" IpProtocol=tcp,FromPort=80,ToPort=80,IpRanges="[{CidrIp=0.0.0.0/0}]" IpProtocol=tcp,FromPort=443,ToPort=443,IpRanges="[{CidrIp=0.0.0.0/0}]"
 
 
-
 #create instance
 
 aws ec2 run-instances --image-id ami-02396cdd13e9a1257 --instance-type t2.micro --key-name newwebserverkey2 --subnet-id subnet-0ee2423dbd790a51d --security-group-id sg-05826b1f34c0606b8 --user-data file://user_data_example--tag-specification "ResourceType= instance,Tags=[{Key=Name,Value=Webserver-from-CLI}]"
