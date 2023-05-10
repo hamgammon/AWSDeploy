@@ -18,5 +18,12 @@ resource "aws_instance" "app_server" {
   tags = {
     Name = "My-WebServer"
   }
-}
+  
+  lifecycle {
+    ignore_changes = [
+      tags
+      ]
 
+    prevent_destroy = true
+  }
+}
