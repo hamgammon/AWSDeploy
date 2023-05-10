@@ -16,8 +16,6 @@ provider "aws" {
   region = "us-east-1"
 }
 
-
-
 # Create (and display) an SSH key
 resource "tls_private_key" "mykey" {
   algorithm = "RSA"
