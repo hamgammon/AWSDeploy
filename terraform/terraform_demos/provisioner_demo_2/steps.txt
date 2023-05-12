@@ -1,0 +1,6 @@
+Steps for remote exec provisioner
+1) Create an EC2 key and copy pem file in the current folder
+2) Use this key for the instance
+3) Create a security group and open ports 22 and 80 from any IP 0.0.0.0/0
+4) Use this security group for the instance
+5) Open the browser and visit the public IP
