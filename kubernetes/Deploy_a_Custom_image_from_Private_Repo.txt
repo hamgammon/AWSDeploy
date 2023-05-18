@@ -1,0 +1,27 @@
+1) Upload the Image to Docker Hub: coderden/mynginx:v1 (replace and put your username/repo-name)
+2) Logout from Docker using the command --> docker logout
+3) Create a Kubernetes deployment for the uploaded image
+4) Create a Load Balancer service at port 80 for the deployment
+
+This deployment will fail since Kubernetes does not have credentials to pull the image
+
+5) Create a Kubernetes secret
+
+kubectl create secret docker-registry mydockersecret --docker-username="<USERNAME>" --docker-password "<PASSWORD>" --docker-server=docker.io
+
+6) Verify that secret is created
+
+kubectl get secrets
+
+7) Mention the docker secret in the deployment yaml under Pod spec section
+    spec:
+      containers:
+      - name: mynginx-container
+        image: coderden/mynginx:v1
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+        - name: mydockersecret
+
+8) apply the deployment yaml file
+9) Pods must be in running state since image pull will be successful

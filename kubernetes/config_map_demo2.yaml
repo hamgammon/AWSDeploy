@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-configmap
+spec:
+  containers:
+  - name: command-demo-container
+    image: nginx
+    envFrom:
+      - configMapRef:
+          name: mysettings-config1

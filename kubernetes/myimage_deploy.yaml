@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mynginx-app
+  template:
+    metadata:
+      name: mynginx-pod
+      labels:
+        app: mynginx-app
+    spec:
+      containers:
+      - name: mymynginx-con
+        image: hamgammon/nginx:v1
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service-lb
+spec:
+  type: LoadBalancer
+  selector:
+    #app: nginx-app
+    app: mynginx-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

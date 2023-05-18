@@ -1,0 +1,47 @@
+Step-1: Create a config map
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysettings-config2
+data:
+  name: John
+  location: USA
+-------------------------------------------------
+Step-2: Create a Pod
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+  - name: command-demo-container
+    image: nginx
+    env:
+    - name: MYSETTINGS_NAME
+      valueFrom:
+        configMapKeyRef:
+          name: mysettings-config2
+          key: name
+    - name: MYSETTINGS_LOCATION
+      valueFrom:
+        configMapKeyRef:
+          name: mysettings-config2
+          key: location
+-------------------------------------------------
+Step-3: Get into the container of the above Pod
+
+kubectl exec -it command-demo -- /bin/bash
+
+Run the following command in the container
+printenv
+
+see the values of the following environmental variables
+MYSETTINGS_NAME
+MYSETTINGS_LOCATION
+
+
+

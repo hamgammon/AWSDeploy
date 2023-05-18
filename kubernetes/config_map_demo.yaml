@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-demo
+  labels:
+    purpose: demonstrate-command
+spec:
+  containers:
+  - name: command-demo-container
+    image: nginx
+    env:
+    - name: MYSETTINGS_NAME
+      valueFrom:
+        configMapKeyRef:
+          name: mysettings-config2
+          key: name
+    - name: MYSETTINGS_LOCATION
+      valueFrom:
+        configMapKeyRef:
+          name: mysettings-config2
+          key: location

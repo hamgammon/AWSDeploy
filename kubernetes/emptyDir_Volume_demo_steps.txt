@@ -1,0 +1,13 @@
+1) Deploy pod_with_volume_2.yaml
+
+2) get into container c1
+
+3) create a file in /data1
+
+4) exit container c1
+
+5) get into container c2
+
+6) verify that file created in step 3 exists in /data2
+
+kubectl exec -it pod-name -c c2 -- /bin/bash

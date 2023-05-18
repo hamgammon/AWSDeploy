@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mynginx
+  template:
+    metadata:
+      labels:
+        app: mynginx
+    spec:
+      containers:
+      - image: nginx
+        name: mynginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mynginx-cip
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: mynginx
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: myhttpd
+  name: myhttpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myhttpd
+  template:
+    metadata:
+      labels:
+        app: myhttpd
+    spec:
+      containers:
+      - image: httpd
+        name: myhttpd
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myhttpd-cip
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: myhttpd
+---
+
+apiVersion: networking.k8s.io/v1 
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: mynginx-cip
+      port:
+        number: 8080
+  rules:
+  - host: www.example.com
+    http:
+      paths:
+      - path: /nginx
+        pathType: Prefix #Exact
+        backend:
+          service:
+            name: mynginx-cip
+            port: 
+              number: 8080
+      - path: /httpd
+        pathType: Prefix
+        backend:
+          service:
+            name: myhttpd-cip
+            port: 
+              number: 8080
