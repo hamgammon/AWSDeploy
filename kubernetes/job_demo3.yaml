@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-job
+spec:
+  completions: 10
+  parallelism: 3
+  template:
+    spec:
+      containers:
+      - name: hello-con
+        image: ubuntu
+        command: ["echo", "welcome"]   
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Never

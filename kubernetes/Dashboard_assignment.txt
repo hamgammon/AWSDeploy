@@ -1,0 +1,11 @@
+Kubernetes Dashboard assignment
+ ------------------------------
+ 1) Create a new namespace in Dashboard through YAML
+ 2) Run a Pod in the new namespace (through YAML file upload)
+ 3) Verify in Dashboard that the Pod is in running state
+ 4) View the details of the Pod in the Terminal
+ 5) Add a new Label to the Pod in the Dashboard
+ 6) Verify that the new Label is visible when we get Pod in Terminal
+ 7) Delete the Pod through Dashboard
+ 8) Verify that the Pod is delete from Terminal (get all will not show the Pod anymore)
+ 
