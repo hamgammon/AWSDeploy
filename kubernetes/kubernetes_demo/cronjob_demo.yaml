@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello-job
+spec:
+  schedule: "* * * * *"     # every miniute
+  #schedule: "0 */1 * * *"   # every hour
+  #schedule: "0 */12 * * *"  # every 12 hours
+  #schedule: "0 0 */2 * *"   # once every 2 days
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello-con
+            image: ubuntu
+            command: ["echo", "welcome"]   
+          restartPolicy: Never

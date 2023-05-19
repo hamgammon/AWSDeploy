@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysettings-config2
+data:
+  name: John
+  location: USA
+
